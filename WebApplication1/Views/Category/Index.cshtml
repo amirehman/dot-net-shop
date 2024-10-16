@@ -1,0 +1,44 @@
+@model List<Category>
+
+<div class="mt-5">
+    <div class="row mb-3">
+        <div class="col-6">
+            <h2>Categories List</h2>
+        </div>
+        <div class="col-6 d-flex justify-content-end">
+            <a asp-controller="Category" asp-action="Create" class="btn btn-primary d-flex align-items-center gap-2">
+                <i class="bi bi-plus-circle-fill" style="margin-top: -6px;"></i>
+                <span>Add New</span>
+            </a>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+        </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model.OrderBy(u=>u.DisplayOrder))
+            {
+                <tr>
+                    <td> @obj.Id </td>
+                    <td> @obj.Name </td>
+                    <td class="text-end d-flex align-items-center justify-content-end">
+                        <a asp-controller="Category" asp-action="Edit" class="d-flex btn btn-warning gap-2">
+                            <i class="bi bi-pencil-square" style="margin-top: -3px"></i> 
+                            <span>Edit</span>
+                        </a>
+                        <a asp-controller="Category" asp-action="Delete" class="d-flex btn btn-danger gap-2">
+                            <i class="bi bi-trash" style="margin-top: -3px"></i> 
+                            <span>Delete</span>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+
+</div>
